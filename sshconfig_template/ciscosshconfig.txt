@@ -1,0 +1,44 @@
+
+enable
+
+conf t 
+
+inter vlan 1
+   no shut
+   ip add 10.10.10.217 255.255.255.0
+   exit
+
+inter gi0/1 
+   no shutdown
+   exit
+hostname ciscosw1
+
+
+config t
+enable password cisco123
+
+
+
+
+aaa new-model
+username qianchen password cisco123
+ip domain-name lab.chinahorn.com
+
+
+crypto key generate rsa modulus 2048
+ip ssh version 2
+ip ssh time-out 60
+ip ssh authentication-retries 2
+
+line vty 0 15
+    transport input ssh
+    login authen default 
+    exit
+exit
+
+wr mem
+\n
+
+
+
+

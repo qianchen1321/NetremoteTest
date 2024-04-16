@@ -1,0 +1,47 @@
+
+sys
+sysname hw04
+interface GE1/0/0
+  undo portswitch
+  undo shut
+  ip address 10.10.10.136 24
+  quit
+commit
+quit
+save
+y
+
+
+sys
+rsa local-key-pair create
+stelnet server enable
+aaa 
+ local-user qianchen password irreversible-cipher Huawei@123 
+ local-user qianchen level 3
+ local-user qianchen service-type ssh
+ quit
+
+user-interface vty 0 4
+   authentication-mode aaa
+   protocol inbound all
+   quit
+
+
+  
+
+ssh user qianchen service-type all
+ssh user qianchen authentication-type password
+commit
+quit
+save
+
+y
+
+sys
+
+
+
+
+
+Admin,123
+new pass : Huawei@456

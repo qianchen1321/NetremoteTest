@@ -1,0 +1,27 @@
+ip ssh version 2  
+Please create RSA keys (of at least 768 bits size) to enable SSH v2.
+
+ip domain-name test.com   
+
+crypto key generate rsa      
+The name for the keys will be: test.test.com
+Choose the size of the key modulus in the range of 360 to 2048 for your
+  General Purpose Keys. Choosing a key modulus greater than 512 may take
+  a few minutes.
+
+How many bits in the modulus [512]: 1024    //…Ë÷√√‹‘øŒª ˝
+% Generating 1024 bit RSA keys, keys will be non-exportable...[OK]
+
+
+*Mar 1 0:9:30.668: %SSH-5-ENABLED: SSH 2 has been enabled
+
+enable  password admin   
+
+username admin secret admin     
+
+line vty 0 4   
+
+transport input ssh   
+login local     
+end
+test#
